@@ -50,7 +50,7 @@ func Hello(ctx context.Context, in *HelloRequest) (*HelloResponse, error) {
 
 func main() {
     http.Handle("/", zhttp.Handler(Hello))
-    http.ListenAndServe(":3000", r)
+    http.ListenAndServe(":3000", nil)
 }
 // curl http://localhost:3000/?name=World
 // {"message": "Hello, World!"}
