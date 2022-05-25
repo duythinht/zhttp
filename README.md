@@ -60,4 +60,4 @@ Because I'm tired of typing a lot of boilerplate if else, w.WriteHeader and w.Wr
 
 ### Is it any good?
 
-May be
+May be!
