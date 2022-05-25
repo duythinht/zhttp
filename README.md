@@ -14,7 +14,9 @@ zhttp is designed to be the simplest way to declare a http.HandlerFunc, which ha
 * Handle Error with statusCode by generic interface `zhttp.Error`
 * Some helper function to declare common http error
 
-### Example
+## Example
+
+Basic handler
 
 ```go
 package main
@@ -52,6 +54,18 @@ func main() {
 }
 // curl http://localhost:3000/?name=World
 // {"message": "Hello, World!"}
+```
+
+Error handler
+
+```go
+
+var ErrBadRequestMock = errors.New("error mock for bad request")
+
+func func Hello(ctx context.Context, in *HelloRequest) (*HelloResponse, error){
+    return nil, zhttp.BadRequestf("hello bad request, %w", ErrBadRequestMock)
+}
+
 ```
 
 ### Why I made it?
