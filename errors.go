@@ -18,7 +18,7 @@ func (e *httpError) HTTPError() (int, string) {
 	return e.statusCode, e.Error()
 }
 
-func errorWithStatus(statusCode int, err error) *httpError {
+func errorWithStatus(statusCode int, err error) error {
 	return &httpError{
 		error:      err,
 		statusCode: statusCode,
@@ -26,71 +26,71 @@ func errorWithStatus(statusCode int, err error) *httpError {
 }
 
 // BadRequest return 400 with error
-func BadRequest(err error) *httpError {
+func BadRequest(err error) error {
 	return errorWithStatus(http.StatusBadRequest, err)
 }
 
 // BadRequestf return 400 with format error
-func BadRequestf(format string, args ...any) *httpError {
+func BadRequestf(format string, args ...any) error {
 	return errorWithStatus(http.StatusBadRequest, fmt.Errorf(format, args...))
 }
 
 // Unauthorized return 401 with error
-func Unauthorized(err error) *httpError {
+func Unauthorized(err error) error {
 	return errorWithStatus(http.StatusUnauthorized, err)
 }
 
 // Unauthorizedf return 401 with format error
-func Unauthorizedf(format string, args ...any) *httpError {
+func Unauthorizedf(format string, args ...any) error {
 	return errorWithStatus(http.StatusUnauthorized, fmt.Errorf(format, args...))
 }
 
 // PaymentRequired return 402 with error
-func PaymentRequired(err error) *httpError {
+func PaymentRequired(err error) error {
 	return errorWithStatus(http.StatusPaymentRequired, err)
 }
 
 // PaymentRequired return 402 with format error
-func PaymentRequiredf(format string, args ...any) *httpError {
+func PaymentRequiredf(format string, args ...any) error {
 	return errorWithStatus(http.StatusUnauthorized, fmt.Errorf(format, args...))
 }
 
 // Forbidden return 403 with error
-func Forbidden(err error) *httpError {
+func Forbidden(err error) error {
 	return errorWithStatus(http.StatusForbidden, err)
 }
 
 // Forbiddenf return 403 with format error
-func Forbiddenf(format string, args ...any) *httpError {
+func Forbiddenf(format string, args ...any) error {
 	return errorWithStatus(http.StatusForbidden, fmt.Errorf(format, args...))
 }
 
 // NotFound return 404 with error
-func NotFound(err error) *httpError {
+func NotFound(err error) error {
 	return errorWithStatus(http.StatusNotFound, err)
 }
 
 // NotFoundf return 404 with format error
-func NotFoundf(format string, args ...any) *httpError {
+func NotFoundf(format string, args ...any) error {
 	return errorWithStatus(http.StatusNotFound, fmt.Errorf(format, args...))
 }
 
 // NotFound return 406 with error
-func NotAcceptable(err error) *httpError {
+func NotAcceptable(err error) error {
 	return errorWithStatus(http.StatusNotAcceptable, err)
 }
 
 // NotAcceptablef return 406 with format error
-func NotAcceptablef(format string, args ...any) *httpError {
+func NotAcceptablef(format string, args ...any) error {
 	return errorWithStatus(http.StatusNotFound, fmt.Errorf(format, args...))
 }
 
 // InternalServerError return 500 with error
-func InternalServerError(err error) *httpError {
+func InternalServerError(err error) error {
 	return errorWithStatus(http.StatusInternalServerError, err)
 }
 
 // NotAcceptablef return 500 with format error
-func InternalServerErrorf(format string, args ...any) *httpError {
+func InternalServerErrorf(format string, args ...any) error {
 	return errorWithStatus(http.StatusInternalServerError, fmt.Errorf(format, args...))
 }

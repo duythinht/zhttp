@@ -40,10 +40,10 @@ func BenchmarkTypeAssertion(b *testing.B) {
 
 	errMock := errors.New("mock")
 
-	e := zhttp.BadRequest(errMock)
+	err := zhttp.BadRequest(errMock)
 
 	for i := 0; i < b.N; i++ {
-		if httpErr, ok := any(e).(zhttp.Error); ok {
+		if httpErr, ok := err.(zhttp.Error); ok {
 			httpErr.HTTPError()
 		}
 	}
@@ -62,28 +62,6 @@ func BenchmarkSwitchTypeAssertion(b *testing.B) {
 		default:
 
 		}
-	}
-}
-
-func BenchmarkInterfaceCallWithOutAssertion(b *testing.B) {
-
-	errMock := errors.New("mock")
-
-	e := zhttp.Error(zhttp.BadRequest(errMock))
-
-	for i := 0; i < b.N; i++ {
-		e.HTTPError()
-	}
-}
-
-func BenchmarkNoneTypeAssertion(b *testing.B) {
-
-	errMock := errors.New("mock")
-
-	e := zhttp.BadRequest(errMock)
-
-	for i := 0; i < b.N; i++ {
-		e.HTTPError()
 	}
 }
 
