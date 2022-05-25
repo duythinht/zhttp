@@ -114,3 +114,13 @@ func bind(r *http.Request, in any) error {
 
 	return json.NewDecoder(r.Body).Decode(in)
 }
+
+// RequestFromContext get the *http.Request from wrapped context
+// this func use for some general propose, eg: upload file, handle form...
+func RequestFromContext(ctx context.Context) *http.Request {
+	r, ok := ctx.Value(RequestContextKey).(*http.Request)
+	if ok {
+		return r
+	}
+	return nil
+}
