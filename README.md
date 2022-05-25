@@ -10,7 +10,7 @@ zhttp is designed to be the simplest way to declare a http.HandlerFunc, which ha
 
 ### Features
 
-* Convert generic `func(context.Context, *Input) (Output, error)` to `net/http.HandlerFunc`
+* Convert generic `func(context.Context, *Input) (*Output, error)` to `net/http.HandlerFunc`
 * Handle Error with statusCode by generic interface `zhttp.Error`
 * Some helper function to declare common http error
 
