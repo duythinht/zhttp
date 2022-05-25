@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+// Error signature hold the error, which return http statusCode and body
 type Error interface {
 	HTTPError() (int, string)
 }
@@ -14,6 +15,7 @@ type httpError struct {
 	statusCode int
 }
 
+// HTTPError get status code and http body for an error
 func (e *httpError) HTTPError() (int, string) {
 	return e.statusCode, e.Error()
 }
