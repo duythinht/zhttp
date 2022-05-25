@@ -9,9 +9,11 @@ import (
 	"strconv"
 )
 
+// ContextKeyType for set context.Value
 type ContextKeyType int
 
 const (
+	// RequestContextKey for http.Request
 	RequestContextKey ContextKeyType = iota
 )
 
